@@ -56,16 +56,16 @@
       <HintPath>..\packages\Kaliko.Logger.1.1.1\lib\Kaliko.Logger.dll</HintPath>
     </Reference>
     <Reference Include="KalikoCMS.Admin, Version=1.2.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\KalikoCMS.Core.1.2.5\lib\KalikoCMS.Admin.dll</HintPath>
+      <HintPath>packages\KalikoCMS.Core.1.2.5\lib\KalikoCMS.Admin.dll</HintPath>
     </Reference>
     <Reference Include="KalikoCMS.Engine, Version=1.2.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\KalikoCMS.Core.1.2.5\lib\KalikoCMS.Engine.dll</HintPath>
+      <HintPath>packages\KalikoCMS.Core.1.2.5\lib\KalikoCMS.Engine.dll</HintPath>
     </Reference>
     <Reference Include="KalikoCMS.Identity, Version=1.2.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\KalikoCMS.Identity.1.2.5\lib\KalikoCMS.Identity.dll</HintPath>
+      <HintPath>packages\KalikoCMS.Identity.1.2.5\lib\KalikoCMS.Identity.dll</HintPath>
     </Reference>
     <Reference Include="KalikoCMS.WebForms, Version=1.2.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\KalikoCMS.WebForms.1.2.5\lib\KalikoCMS.WebForms.dll</HintPath>
+      <HintPath>packages\KalikoCMS.WebForms.1.2.5\lib\KalikoCMS.WebForms.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.4\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
@@ -193,7 +193,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Account\Login.aspx" />
     <Content Include="Admin\Assets\fonts\hind\OFL.txt" />
     <Content Include="Admin\Assets\fonts\hind\webfont-hind.css" />
     <Content Include="Admin\Assets\images\defaultpagetype.png" />
@@ -280,16 +279,10 @@
     <Content Include="ImageCache\readme.txt" />
     <Content Include="Login.aspx" />
     <Content Include="Logout.aspx" />
+    <Content Include="SetupAdminAccount.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Account\Login.aspx.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Account\Login.aspx.designer.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Global.asax.cs">
@@ -312,12 +305,8 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Pages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Content Include="connectionstrings.config" />
-    <None Include="Startup.Auth.cs.bak" />
     <Compile Include="Startup.cs" />
-    <None Include="Web.secrets.config" />
-  </ItemGroup>
-  <ItemGroup>
+    <Content Include="connectionstrings.config" />
     <Content Include="Admin\Templates\MasterPages\Base.Master" />
     <Content Include="Admin\Templates\MasterPages\Admin.Master" />
     <Content Include="Admin\Handlers\MarkdownHandler.ashx" />
@@ -335,6 +324,10 @@
     <Content Include="Admin\Assets\vendors\font-awesome\fonts\fontawesome-webfont.woff" />
     <Content Include="Admin\Assets\vendors\font-awesome\fonts\fontawesome-webfont.ttf" />
     <Content Include="Admin\Assets\vendors\font-awesome\fonts\fontawesome-webfont.eot" />
+    <None Include="Startup.Auth.cs.bak" />
+    <None Include="Web.secrets.config" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Admin\Assets\images\Thumbnail.ashx" />
     <Content Include="Admin\Assets\fonts\hind\hind-semibold-webfont.woff" />
     <Content Include="Admin\Assets\fonts\hind\hind-semibold-webfont.ttf" />
@@ -360,6 +353,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Account\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <PropertyGroup>

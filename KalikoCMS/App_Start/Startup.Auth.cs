@@ -1,42 +1,37 @@
-using System;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin;
-using Microsoft.Owin.Security.Cookies;
-using Owin;
+namespace KalikoCMS {
+    using System;
+    using AspNet.Identity.DataAccess;
+    using AspNet.Identity.DataAccess.Data;
+    using KalikoCMS.Identity;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.Owin;
+    using Microsoft.Owin;
+    using Microsoft.Owin.Security.Cookies;
+    using Owin;
 
-using KalikoCMS; // To access ApplicationUserManager, ApplicationRoleManager, ApplicationSignInManager
-using KalikoCMS.Models; // To access ApplicationUser, ApplicationRole
+    public partial class Startup {
 
-namespace KalikoCMS // Make sure this matches your project's root namespace
-{
-    public partial class Startup
-    {
-        // For more information on configuring authentication, please visit https://go.microsoft.com/fwlink/?LinkId=301864
-        public void ConfigureAuth(IAppBuilder app)
-        {
+        // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301883
+        public void ConfigureAuth(IAppBuilder app) {
             // Configure the db context, user manager and signin manager to use a single instance per request
-            // FIX FOR CS0411: Explicitly specify type arguments and use lambda for Func
-            app.CreatePerOwinContext<ApplicationUserManager>((options, context) => ApplicationUserManager.Create(options, context));
-            app.CreatePerOwinContext<ApplicationRoleManager>((options, context) => ApplicationRoleManager.Create(options, context));
-            app.CreatePerOwinContext<ApplicationSignInManager>((options, context) => ApplicationSignInManager.Create(options, context));
+            app.CreatePerOwinContext(DataContext.Create);
+            app.CreatePerOwinContext<IdentityUserManager>(ApplicationUserManager.Create);
+            app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
 
             // Enable the application to use a cookie to store information for the signed in user
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider
             // Configure the sign in cookie
-            app.UseCookieAuthentication(new CookieAuthenticationOptions
-            {
+            app.UseCookieAuthentication(new CookieAuthenticationOptions {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/Account/Login"), // Or wherever your login page is
-                Provider = new CookieAuthenticationProvider
-                {
-                    // Corrected lambda signature for Identity Core 2.x and Guid keys:
-                    OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, ApplicationUser, Guid>(
-                        validateInterval: TimeSpan.FromMinutes(30),
-                        regenerateIdentityCallback: (manager, user) => user.GenerateUserIdentityAsync(manager),
-                        getUserIdCallback: (identity) => Guid.Parse(identity.GetUserId())) // IMPORTANT: Guid.Parse
+                LoginPath = new PathString("/Login.aspx"),
+                Provider = new CookieAuthenticationProvider {
+                    OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, IdentityUser, Guid>(
+                        TimeSpan.FromMinutes(30),
+                        (manager, user) => user.GenerateUserIdentityAsync(manager),
+                        (id) => new Guid(id.GetUserId()))
                 }
             });
+            // Use a cookie to temporarily store information about a user logging in with a third party login provider
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
             // Enables the application to temporarily store user information when they are verifying the second factor in the two-factor authentication process.

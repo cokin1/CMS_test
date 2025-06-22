@@ -11,6 +11,8 @@ namespace KalikoCMS
     {
         protected void Application_Start(object sender, EventArgs e)
         {
+            // This line initializes the KalikoCMS engine, including the routing system.
+           // Cms.Init();
         }
     }
 }
