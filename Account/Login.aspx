@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" UnobtrusiveValidationMode="None" CodeBehind="Login.aspx.cs" Inherits="KalikoCMS.Login" %>
+<%@ Page Language="C#" AutoEventWireup="true" UnobtrusiveValidationMode="None" CodeBehind="Login.aspx.cs" Inherits="KalikoCmsClean.Login" %>
 <!doctype html>
 <html>
 <head>
@@ -64,6 +64,7 @@
         <div class="form-group">
           <div>
             <asp:Button runat="server" OnClick="LogIn" Text="Log in" CssClass="btn" />
+            <asp:Button runat="server" ID="AzureAdLoginButton" OnClick="AzureAdLoginButton_Click" Text="Login with Corporate Account" CssClass="btn" />
           </div>
         </div>
       </div>

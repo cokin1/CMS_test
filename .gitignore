@@ -1,19 +1,9 @@
-# Visual Studio specific
-.vs/
-*.suo
-*.user
-
-# Build results
-[Bb]in/
-[Oo]bj/
-
-# NuGet packages
-[Pp]ackages/
-
-# Our specific secret files
+# Ignore configuration files with secrets
 *.secrets.config
 connectionstrings.config
 
-# Other common files
-*.log
-*.DS_Store
+# Standard build folders
+[Bb]in/
+[Oo]bj/
+.vs/
+[Pp]ackages/

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KalikoCMS {
+namespace KalikoCmsClean {
     
     
     public partial class Logout {

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("KalikoCMS")]
+[assembly: AssemblyTitle("KalikoCmsClean")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("KalikoCMS")]
+[assembly: AssemblyProduct("KalikoCmsClean")]
 [assembly: AssemblyCopyright("Copyright ©  2025")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("adee13df-fb5c-40de-b4cf-5052793155cb")]
+[assembly: Guid("f92c9344-425a-4cca-8ad3-4cef9588a4b8")]
 
 // Version information for an assembly consists of the following four values:
 //

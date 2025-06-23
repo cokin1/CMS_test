@@ -1,4 +1,4 @@
-namespace KalikoCMS {
+namespace KalikoCmsClean {
     using System;
     using System.Web;
 
